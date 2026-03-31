@@ -1,9 +1,11 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 
-# Load the API key from .env file
-load_dotenv()
+# Load the .env file from the project root regardless of current working directory.
+ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
+load_dotenv(dotenv_path=ENV_PATH)
 
 client = AzureOpenAI(
     api_key=os.environ["AZURE_OPENAI_API_KEY"],

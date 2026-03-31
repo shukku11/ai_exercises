@@ -1,0 +1,1 @@
+"""Basic prompts exercise package."""
