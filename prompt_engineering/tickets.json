@@ -1,0 +1,22 @@
+[
+  {"text": "I was charged twice for my subscription this month", "label": "Billing"},
+  {"text": "App keeps crashing when I try to open it", "label": "Technical Issue"},
+  {"text": "Please reset my password, I can't login", "label": "Account Management"},
+  {"text": "Can you add a dark mode feature?", "label": "Feature Request"},
+  {"text": "Refund has not been processed after cancellation", "label": "Billing"},
+  {"text": "I want to change my registered email address", "label": "Account Management"},
+  {"text": "Video upload fails every time at 80%", "label": "Technical Issue"},
+  {"text": "It would be great to have offline mode", "label": "Feature Request"},
+  {"text": "My payment method keeps getting rejected", "label": "Billing"},
+  {"text": "I forgot my username", "label": "Account Management"},
+  {"text": "The app is very slow after the latest update", "label": "Technical Issue"},
+  {"text": "Can you integrate with Google Drive?", "label": "Feature Request"},
+  {"text": "I was billed even after cancelling my plan", "label": "Billing"},
+  {"text": "How do I delete my account permanently?", "label": "Account Management"},
+  {"text": "The search function returns incorrect results", "label": "Technical Issue"},
+  {"text": "Add multi-language support", "label": "Feature Request"},
+  {"text": "I did not receive invoice for last payment", "label": "Billing"},
+  {"text": "Unable to verify my email address", "label": "Account Management"},
+  {"text": "App freezes when uploading large files", "label": "Technical Issue"},
+  {"text": "Can we get better notification controls?", "label": "Feature Request"}
+]
