@@ -5,7 +5,6 @@ import json
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
 from openai import AzureOpenAI
 
 
@@ -22,6 +21,10 @@ SYSTEM_PROMPT = (
     "- No extra text"
 )
 
+AZURE_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT", "")
+AZURE_DEPLOYMENT = os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4o-mini")
+AZURE_API_KEY = os.getenv("AZURE_OPENAI_API_KEY", "")
+
 
 def load_tickets(dataset_file: str) -> list[dict[str, str]]:
     data_path = Path(__file__).resolve().with_name(dataset_file)
@@ -30,19 +33,17 @@ def load_tickets(dataset_file: str) -> list[dict[str, str]]:
 
 
 def init_client() -> tuple[AzureOpenAI, str]:
-    env_path = Path(__file__).resolve().parent.parent / ".env"
-    load_dotenv(dotenv_path=env_path)
-
-    endpoint = os.getenv("ENDPOINT_URL", os.getenv("AZURE_OPENAI_ENDPOINT", "https://prompt-engineering-11.openai.azure.com/"))
-    deployment = os.getenv("DEPLOYMENT_NAME", os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4o-mini"))
-    subscription_key = os.getenv("AZURE_OPENAI_API_KEY", "REPLACE_WITH_YOUR_KEY_VALUE_HERE")
+    if not AZURE_ENDPOINT or not AZURE_API_KEY:
+        raise ValueError(
+            "Missing environment variables: AZURE_OPENAI_ENDPOINT and AZURE_OPENAI_API_KEY"
+        )
 
     client = AzureOpenAI(
-        azure_endpoint=endpoint,
-        api_key=subscription_key,
+        azure_endpoint=AZURE_ENDPOINT,
+        api_key=AZURE_API_KEY,
         api_version="2025-01-01-preview",
     )
-    return client, deployment
+    return client, AZURE_DEPLOYMENT
 
 
 def user_ticket_wrapper(ticket_text: str) -> str:
